@@ -32,6 +32,18 @@
               <li>
                   <a href="{% url 'products' %}"> Products</a>
               </li>
+              {% if user.is_authenticated %}
+              <li>
+                <a href="{% url 'logout' %}"><i class="fa fa-user"></i> logout</a>
+              </li>
+            {% else %}
+              <li>
+                <a href="{% url 'login' %}"><i class="fa fa-user"></i> Login</a>
+              </li>
+              <li>
+                <a href="{% url 'signup' %}"><i class="fa fa-user"></i> Sign Up</a>
+              </li>
+             {% endif %} 
 
               {% if  request.session.cart|length == 0 %}
               <li>
