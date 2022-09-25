@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{%block content %}
+
+<h1 class="mb-3">Phorest Products</h1>
+<div class="row row-col-3 g-2"></div>
+
+{% load cart_tag %}
+
+    {% for product in products %}
+          <div class="row justify-content-center col-md-6">
+              <div class="card text-black">
+                <div class="card-body">
+                  <div class="text-center">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <img src="{{product.image}}" class="img-thumbnail" alt="{{product.name}}">
+                    {% if product.quantityInStock == 1 %}
+                    <p class="text-danger mb-4">Only {{product.quantityInStock}} left </p>
+                    {% else %}
+                    <p class="text-muted mb-4">In Stock {{product.quantityInStock}} </p>
+                    {% endif %}
+                    <a href="{% url 'cart_add' product.id %}" class="btn btn-success"> Add to Cart</a>
+                  </div>
+                  <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                    <span>Price </span><span>{{product.price}}</span>
+                  </div>
+                </div>
+              </div>
+          </div>
+    {% endfor%}  
+
+</div>
+{% endblock %}

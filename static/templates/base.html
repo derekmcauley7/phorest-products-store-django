@@ -1,0 +1,61 @@
+{% load static %}
+
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/b6c854f44c.js"></script>
+  </head>
+
+<div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h5 class="text-white h4">Products </h5>
+
+    </div>
+  </div>
+  <nav class="navbar navbar-custom navbar-masthead navbar-default navbar-fixed-top" >
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li>
+                  <a href="{% url 'products' %}"> Products</a>
+              </li>
+
+              {% if  request.session.cart|length == 0 %}
+              <li>
+                <a href=""><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
+              </li>   
+              {% else %}
+              <li>
+                <a href="{% url 'cart_detail' %}" style="font-weight: bold;">{{request.session.cart|length }} 
+                  <i class="fa fa-shopping-cart fa-lg" aria-hidden="true" style="color: #d9534f; font-weight: bold;"></i>
+                </a>
+              </li>   
+              {% endif %}
+          </ul>
+      </div>
+    </div>
+</nav>
+<body>
+    <div class="my-5 text-center container">
+    {% block content%}
+    <footer>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  {%endblock%}
+</div>
+</body>
+</html>
