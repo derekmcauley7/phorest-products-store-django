@@ -23,8 +23,7 @@ class TestViews(TestCase):
 
 
     def test_add_cart_item_view(self):
-        # login user 
-        self.client.post('/login', self.credentials, follow=True)
+        self.login_user()
 
         response = self.client.get(reverse('cart_add', args=[1]))
         self.assertEqual(response.status_code, 302)
@@ -34,9 +33,11 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_cart_details_view(self):
-        # login user 
-        self.client.post('/login', self.credentials, follow=True)
+        self.login_user()
 
         response = self.client.get(reverse('cart_detail'))
         self.assertTemplateUsed('display-cart.html')
         self.assertEqual(response.status_code, 200)
+
+    def login_user(self):
+        return self.client.post('/login', self.credentials, follow=True)
