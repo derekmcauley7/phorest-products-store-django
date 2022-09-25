@@ -1,10 +1,20 @@
-from userprofile.models import Profile
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
 from django.urls import reverse
 
 
 class TestViews(TestCase):
+
+    def setUp(self):
+        self.credentials = {
+            'username': 'testuser',
+            'password': 'secret'}
+        User.objects.create_user(**self.credentials)
+
+
+    def test_user_login(self):
+        response = self.client.post('/login', self.credentials, follow=True)
+        self.assertTrue(response.context['user'].is_active)
 
     def test_login_url(self):
         client = Client()
@@ -28,3 +38,11 @@ class TestViews(TestCase):
         client = Client()
         response = client.get(reverse('profile'))
         self.assertEqual(response.status_code, 302)
+
+    def test_profile_with_user_login(self):
+        # login a user
+        self.client = Client()
+        response = self.client.post('/login', self.credentials, follow=True)
+
+        response = self.client.get(reverse('profile'))
+        self.assertEqual(response.status_code, 200)
