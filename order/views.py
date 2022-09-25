@@ -1,6 +1,4 @@
 from django.shortcuts import render
-
-
 from product.models import Product
 from userprofile.models import Profile
 from order.models import Order, OrderItem
@@ -15,14 +13,14 @@ import requests
 
 @login_required(login_url= "/login")
 def order_complete(request):
-    total = 0 
-    order = Order.objects.create(totalPrice = total, user_id= request.user.id)
+    total_order_price = 0 
+    order = Order.objects.create(total_price = total_order_price, user_id= request.user.id)
     cart = Cart(request)
     order.user = request.user
     orderItems = []
     for key, value in request.session.get(settings.CART_SESSION_ID).items():
         product = Product.objects.get(pk=value['product_id'])
-        total = total + Decimal(value['quantity']) * Decimal(value['price'])
+        total_order_price = total_order_price + Decimal(value['quantity']) * Decimal(value['price'])
 
         orderItem = OrderItem.objects.create(
             price = Decimal(value['price']), 
@@ -32,7 +30,7 @@ def order_complete(request):
         orderItem.save()
         orderItems.append(orderItem)
     
-    order.totalPrice = total
+    order.total_price = total_order_price
     order.save()
     profile = Profile.objects.get(user = order.user)
     cart.clear()

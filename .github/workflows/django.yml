@@ -29,6 +29,10 @@ jobs:
         pip install braintree mysqlclient apprise
         python manage.py makemigrations
         python manage.py migrate
+    - name: Migrations
+      run: |
+        python manage.py makemigrations
+        python manage.py migrate
     - name: Run Tests
       env:
         DB: ${{ matrix.db }}
