@@ -1,3 +1,4 @@
+from curses import is_term_resized
 from django.shortcuts import render
 from product.models import Product
 from userprofile.models import Profile
@@ -17,29 +18,42 @@ def order_complete(request):
     order = Order.objects.create(total_price = total_order_price, user_id= request.user.id)
     cart = Cart(request)
     order.user = request.user
-    orderItems = []
+    order_items = []
     for key, value in request.session.get(settings.CART_SESSION_ID).items():
         product = Product.objects.get(pk=value['product_id'])
         total_order_price = total_order_price + Decimal(value['quantity']) * Decimal(value['price'])
 
-        orderItem = OrderItem.objects.create(
+        order_item = OrderItem.objects.create(
             price = Decimal(value['price']), 
             quantity = int(value['quantity']), 
             product = product,
             order = order)
-        orderItem.save()
-        orderItems.append(orderItem)
+        order_item.save()
+        order_items.append(order_item)
     
     order.total_price = total_order_price
     order.save()
     profile = Profile.objects.get(user = order.user)
     cart.clear()
+    order_items_data(order.order_items)
     return render(request, "order/order-complete.html", {"order" : order, "profile" : profile})
 
 
 def make_api_request_for_products():
     res = requests.post(API_ENDPOINT + 'purchase', 
     auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD))
-    return res.json().get('_embedded').get('products')
+    return res.json()
+
+def order_items_data(order_items):
+    product_json = []
+    for item in order_items:
+        product_json.append({
+            "branchProductId": item.product.productId,
+            "price" : str(item.price),
+            "quantity": item.quantity
+        })
+    return product_json
+        
+
 
 
