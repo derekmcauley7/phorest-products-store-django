@@ -22,3 +22,10 @@ class TestViews(TestCase):
         expected_json = [{'branchProductId': '1', 'price': '10.00', 'quantity': 1}, {'branchProductId': '1', 'price': '20.00', 'quantity': 1}]
         product_json = views.order_items_data(self.order.order_items)
         self.assertEquals(product_json, expected_json)
+
+    def test_should_create_purchase_data(self):
+        expect_purchase_data = {'items': [[{'branchProductId': '1', 'price': '10.00', 'quantity': 1}, {'branchProductId': '1', 'price': '20.00', 'quantity': 1}]], 'number': '11111', 'payments': [{'amount': 20.0, 'type': 'CREDIT'}]}
+        product_json = [{'branchProductId': '1', 'price': '10.00', 'quantity': 1}, {'branchProductId': '1', 'price': '20.00', 'quantity': 1}]
+        
+        actual_purchase_data = views.create_purchase_request_data(product_json, 20.00, "11111")
+        self.assertEquals(actual_purchase_data, expect_purchase_data)

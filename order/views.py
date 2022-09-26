@@ -53,6 +53,16 @@ def order_items_data(order_items):
             "quantity": item.quantity
         })
     return product_json
+
+def create_purchase_request_data(product_json, price, order_numer):
+    return {"items":[product_json],
+            "number": order_numer,
+            "payments":[
+            {
+                "amount":price,
+                "type":"CREDIT"
+            }]}
+
         
 
 
