@@ -10,7 +10,7 @@ class PhorestApi():
         return res.json().get('_embedded').get('products')
 
         
-    def make_api_request_for_products():
+    def create_purchase():
         res = requests.post(API_ENDPOINT + 'purchase', 
         auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD))
         return res.json()
