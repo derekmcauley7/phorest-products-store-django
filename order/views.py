@@ -1,4 +1,3 @@
-from curses import is_term_resized
 from django.shortcuts import render
 from product.models import Product
 from userprofile.models import Profile
@@ -7,10 +6,8 @@ from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from decimal import Decimal
 from django.conf import settings
-from phorestproducts.settings import API_ENDPOINT, API_USERNAME, API_PASSWORD
 from .models import Product
-from requests.auth import HTTPBasicAuth 
-import requests
+from phorestapi.phorestapi import PhorestApi
 
 @login_required(login_url= "/login")
 def order_complete(request):
@@ -35,33 +32,9 @@ def order_complete(request):
     order.save()
     profile = Profile.objects.get(user = order.user)
     cart.clear()
-    order_items_data(order.order_items)
+    
     return render(request, "order/order-complete.html", {"order" : order, "profile" : profile})
 
-
-def make_api_request_for_products():
-    res = requests.post(API_ENDPOINT + 'purchase', 
-    auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD))
-    return res.json()
-
-def order_items_data(order_items):
-    product_json = []
-    for item in order_items:
-        product_json.append({
-            "branchProductId": item.product.productId,
-            "price" : str(item.price),
-            "quantity": item.quantity
-        })
-    return product_json
-
-def create_purchase_request_data(product_json, price, order_numer):
-    return {"items":[product_json],
-            "number": order_numer,
-            "payments":[
-            {
-                "amount":price,
-                "type":"CREDIT"
-            }]}
 
         
 

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'shoppingcart',
     'userprofile',
     'order',
+    'phorestapi',
     'cart',
 ]
 
