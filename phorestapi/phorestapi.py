@@ -4,7 +4,7 @@ from phorestproducts.settings import API_ENDPOINT, API_USERNAME, API_PASSWORD
 
 class PhorestApi():
 
-    def getProduct():
+    def get_products():
         res = requests.get(API_ENDPOINT + 'product', 
         auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD))
         return res.json().get('_embedded').get('products')

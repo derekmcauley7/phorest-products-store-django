@@ -5,7 +5,7 @@ from phorestapi.phorestapi import PhorestApi
 def all_products(request):
    products = Product.objects.filter(price__gt = 0.00)
    if not products.exists():
-     productJson = PhorestApi.getProduct()
+     productJson = PhorestApi.get_products()
      print(productJson)
      create_products(productJson)
      products = Product.objects.filter(price__gt = 0.00)
