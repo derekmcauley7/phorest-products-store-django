@@ -1,8 +1,6 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
-import responses
-from responses import GET, POST
 
 
 class TestViews(TestCase):
@@ -15,9 +13,6 @@ class TestViews(TestCase):
 
     def test_order_complete_requires_login(self):
         self.client = Client()
-        self.responses = responses.RequestsMock() 
-        self.responses.add(POST, url="http://hidden.com/purchase")
-        
         response = self.client.get(reverse('order-complete'))
         self.assertEqual(response.status_code, 302)
 
