@@ -1,3 +1,4 @@
+from urllib import response
 from django.shortcuts import render
 from product.models import Product
 from userprofile.models import Profile
@@ -31,6 +32,7 @@ def order_complete(request):
     order.total_price = total_order_price
     order.save()
     profile = Profile.objects.get(user = order.user)
+    response = PhorestApi.create_purchase(order)
     cart.clear()
     
     return render(request, "order/order-complete.html", {"order" : order, "profile" : profile})

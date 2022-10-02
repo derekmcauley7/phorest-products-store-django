@@ -6,7 +6,6 @@ def all_products(request):
    products = Product.objects.filter(price__gt = 0.00)
    if not products.exists():
      productJson = PhorestApi.get_products()
-     print(productJson)
      create_products(productJson)
      products = Product.objects.filter(price__gt = 0.00)
    return render(request, "product/products.html", {"products": products})
