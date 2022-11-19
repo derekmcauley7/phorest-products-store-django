@@ -12,16 +12,14 @@ class Order(models.Model):
     @property
     def order_items(self):
         return OrderItem.objects.filter(order = self)
-
+        
+    @property
     def calculate_total(self):
         total = 0
         order_items = OrderItem.objects.filter(order = self)
         for item in order_items:
-            total = total + Decimal(item.price) * Decimal(item.quantity)
+            total = total + item.price * item.quantity
         return total
-
-
-
 
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="orderItem")
