@@ -16,10 +16,10 @@ class TestUrls(SimpleTestCase):
         url = reverse('item_decrement', args=[1])
         self.assertEqual(resolve(url).func, item_decrement)  
 
-    def test_clear_cart__url(self):
+    def test_clear_cart_url(self):
         url = reverse('cart_clear')
         self.assertEqual(resolve(url).func, cart_clear)  
 
-    def test_cart_details__url(self):
+    def test_cart_details_url(self):
         url = reverse('cart_detail')
         self.assertEqual(resolve(url).func, cart_detail)  
