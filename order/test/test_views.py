@@ -16,9 +16,3 @@ class TestViews(TestCase):
         response = self.client.get(reverse('order-complete'))
         self.assertEqual(response.status_code, 302)
 
-    def test_order_complete_with_login(self):
-        # login User
-        response = self.client.post('/login', self.credentials, follow=True)
-        response = self.client.get(reverse('order-complete'))
-        self.assertEqual(response.status_code, 200)
-

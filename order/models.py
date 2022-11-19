@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from decimal import Decimal
 
 from product.models import Product
 
@@ -11,6 +12,15 @@ class Order(models.Model):
     @property
     def order_items(self):
         return OrderItem.objects.filter(order = self)
+
+    def calculate_total(self):
+        total = 0
+        order_items = OrderItem.objects.filter(order = self)
+        for item in order_items:
+            total = total + Decimal(item.price) * Decimal(item.quantity)
+        return total
+
+
 
 
 class OrderItem(models.Model):
