@@ -18,6 +18,7 @@ class TestModel(TestCase):
         self.assertEquals(self.order.order_items.count(), 1)
         self.assertEquals(self.order.order_items.first(), self.order_item)
         self.assertEquals(self.order.total_price, 10)
+        self.assertEquals(self.order.calculate_total, 10)
         self.assertEquals(self.order.order_items.first().product, self.product)
 
 
