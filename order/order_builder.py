@@ -1,10 +1,5 @@
-from urllib import response
-from django.shortcuts import render
 from product.models import Product
-from userprofile.models import Profile
 from order.models import Order, OrderItem
-from django.contrib.auth.decorators import login_required
-from cart.cart import Cart
 from decimal import Decimal
 from django.conf import settings
 from .models import Product

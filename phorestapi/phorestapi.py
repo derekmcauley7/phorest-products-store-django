@@ -1,4 +1,3 @@
-from contextlib import ContextDecorator
 from requests.auth import HTTPBasicAuth 
 import requests
 from phorestproducts.settings import API_ENDPOINT, API_USERNAME, API_PASSWORD
