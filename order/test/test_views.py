@@ -13,10 +13,10 @@ class TestViews(TestCase):
             'username': 'testuser',
             'password': 'secret'}
         user =User.objects.create_user(**self.credentials)
-        self.product = Product.objects.create(name = 'prdocut_name', price = 10, productId =1, quantityInStock =1)
-        self.order = Order.objects.create(user = user,total_price = 10)
-        self.order_item = OrderItem.objects.create(order = self.order, price = self.product.price, quantity =1, product = self.product)
-        self.order_item2 = OrderItem.objects.create(order = self.order, price = 20, quantity =1, product = self.product)
+        self.product = Product.objects.create(name = 'prdocut_name', price = 10, productId = 1, quantityInStock = 1)
+        self.order = Order.objects.create(user = user)
+        self.order_item = OrderItem.objects.create(order = self.order, price = 10, quantity = 1, product = self.product)
+        self.order_item2 = OrderItem.objects.create(order = self.order, price = 20, quantity = 1, product = self.product)
 
     def test_order_complete_requires_login(self):
         self.client = Client()

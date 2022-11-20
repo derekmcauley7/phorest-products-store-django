@@ -9,10 +9,7 @@ class TestAPI(TestCase):
     def setUp(self):
         self.product = Product.objects.create(name = 'prdocut_name', price = 10, productId =1, quantityInStock =1)
         user = User.objects.create(username = "testuser", password ="userpass1")
-        self.order = Order.objects.create(
-            user = user,
-            total_price = 10
-        )
+        self.order = Order.objects.create(user = user)
         self.order_item = OrderItem.objects.create(order = self.order, price = self.product.price, quantity =1, product = self.product)
         self.order_item2 = OrderItem.objects.create(order = self.order, price = 20, quantity =1, product = self.product)
 
