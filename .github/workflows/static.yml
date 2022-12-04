@@ -3,7 +3,7 @@ name: Deploy API Doc
 on:
   push:
     branches: ["main"]
-    paths: './swagger'
+    paths: '/swagger'
 
   workflow_dispatch:
 
