@@ -1,6 +1,6 @@
 # phorest-products-store-django
 
-Simple Django app the uses the Phorest api to return products for an e-commerce site.
+Simple Django app that uses the Phorest api to return products for an e-commerce site.
 When a sale is made a purchase is created in Phorest for the products sold
 
 
