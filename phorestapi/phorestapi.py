@@ -6,8 +6,7 @@ import json
 class PhorestApi():
 
     def get_products():
-        res = requests.get(API_ENDPOINT + 'product', 
-        auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD))
+        res = requests.get(API_ENDPOINT + 'product', auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD))
         return res.json().get('_embedded').get('products')
 
     def create_purchase(order):

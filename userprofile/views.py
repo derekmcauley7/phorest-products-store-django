@@ -1,8 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic.edit import CreateView
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
