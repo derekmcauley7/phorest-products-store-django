@@ -1,5 +1,11 @@
 ul.errorlist {display: none}
-body { padding-top: 70px; }
+body { 
+    padding-top: 70px; 
+    background-color: #F0F6F9 !important; 
+}
+.navbar-default {
+    background-color: #EEEEEE !important;
+}
 .fa-shopping-cart {
     color:  #5cb85c;
 }
