@@ -13,9 +13,10 @@ https://stripe.com/docs/payments
 
 Screenshots
 
-<img width="1358" alt="Screenshot 2022-09-25 at 17 07 16" src="https://user-images.githubusercontent.com/5990147/192153620-c9d6b8d4-fdf7-4c43-87bd-272af71e415b.png">
+<img width="1372" alt="image" src="https://user-images.githubusercontent.com/5990147/208756205-c523c1ed-bbe3-431b-a108-73201f61a348.png">
 
-<img width="1287" alt="Screenshot 2022-09-25 at 17 09 29" src="https://user-images.githubusercontent.com/5990147/192153622-5a82f4dc-11d7-43db-9e5a-36ab9eb061f4.png">
+<img width="1451" alt="Screenshot 2022-12-20 at 20 00 05" src="https://user-images.githubusercontent.com/5990147/208756225-d0feb9c7-b3f6-4079-940a-666a56b21faf.png">
 
-<img width="1215" alt="Screenshot 2022-09-25 at 17 09 52" src="https://user-images.githubusercontent.com/5990147/192153626-0a04af10-7cc2-4f6f-9811-a71bab0081de.png">
+<img width="1364" alt="Screenshot 2022-12-20 at 20 00 18" src="https://user-images.githubusercontent.com/5990147/208756229-4820084d-7d2f-489b-9103-aa99136ba834.png">
 
+<img width="1254" alt="Screenshot 2022-12-20 at 20 01 21" src="https://user-images.githubusercontent.com/5990147/208756230-7eb7a734-0b4a-4238-a4d5-63ebe52fb24f.png">
