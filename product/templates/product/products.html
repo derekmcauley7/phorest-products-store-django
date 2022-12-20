@@ -14,10 +14,10 @@
                   <div class="text-center">
                     <h5 class="card-title">{{product.name}}</h5>
                     <img src="{{product.image}}" class="img-thumbnail" alt="{{product.name}}">
-                    {% if product.quantityInStock == 1 %}
-                    <p class="text-danger mb-4">Only {{product.quantityInStock}} left </p>
+                    {% if product.quantity_in_stock == 1 %}
+                    <p class="text-danger mb-4">Only {{product.quantity_in_stock}} left </p>
                     {% else %}
-                    <p class="text-muted mb-4">In Stock {{product.quantityInStock}} </p>
+                    <p class="text-muted mb-4">In Stock {{product.quantity_in_stock}} </p>
                     {% endif %}
                     <a href="{% url 'cart_add' product.id %}" class="btn btn-success"> Add to Cart</a>
                   </div>

@@ -28,7 +28,7 @@ class PhorestApi():
         product_json = []
         for item in order_items:
             product_json.append({
-                "branchProductId": item.product.productId,
+                "branchProductId": item.product.product_id,
                 "price" : float(item.price),
                 "quantity": item.quantity
             })

@@ -13,7 +13,7 @@ class TestViews(TestCase):
             id = 1,
             name="test product",
             price = 20,
-            quantityInStock = 1,
+            quantity_in_stock = 1,
             image = 'http://someurl/someimage.png',
         )
         self.credentials = {

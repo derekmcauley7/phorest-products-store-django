@@ -12,5 +12,5 @@ def all_products(request):
 
 def create_products(productJson):
   for product in productJson:
-        newProduct = Product.objects.create(name = product["name"], price = product["price"], productId=product["productId"], image="https://st.depositphotos.com/1987177/3470/v/450/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg", quantityInStock = product["quantityInStock"])
+        newProduct = Product.objects.create(name = product["name"], price = product["price"], product_id=product["product_id"], image="https://st.depositphotos.com/1987177/3470/v/450/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg", quantity_in_stock = product["quantity_in_stock"])
         newProduct.save()

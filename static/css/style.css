@@ -4,6 +4,16 @@ body { padding-top: 70px; }
     color:  #5cb85c;
 }
 
+.btn-primary{
+    background: #88c8bc !important; 
+    color: #88c8bc;
+}
+
+.btn-success {
+    background: #88c8bc !important; 
+    color: #88c8bc;
+}
+
 .navbar-default {
     background-color: #702963;
 }
