@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<div class="user-form"></div>
 {% load crispy_forms_tags %}
-<h1>Sign Up</h1>
-<div class="user-form">
+    <h1>Sign Up</h1>
     <div class="form">
     <form method="POST" > 
         {% csrf_token %}

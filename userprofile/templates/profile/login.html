@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content%}
+{% load static %}
 
 <div class="login">
     <h1>Sign in</h1>
@@ -8,7 +9,7 @@
             {{ form.as_p }}
             <button type="submit" class="btn btn-success"> <i class="fa fa-lock"></i> Login</button>
         </form>
-        <a href="{% url 'signup' %}"></a>
+        <a href="{% url 'signup' %}">
             <button class="btn btn-success"> <i class="fa fa-user-plus"></i> Register</button>
         </a>
     </div>

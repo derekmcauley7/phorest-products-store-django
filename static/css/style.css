@@ -75,3 +75,22 @@ body {
       transition: all 0.3 ease;
       cursor: pointer;
 }
+
+.fa-shopping-cart {
+    color: #000;
+}
+
+.add-button {
+    font-family: "Lato", sans-serif !important;
+    text-transform: uppercase !important;
+    outline: 0;
+    background: #88c8bc !important; 
+    color: #000 !important;
+    width: 50% !important;
+    border: 0 !important;
+    padding: 15px !important;
+    font-size: 14px !important;
+    -webkit-transition: all 0.3 ease !important;
+    transition: all 0.3 ease !important;
+    cursor: pointer !important;
+}
