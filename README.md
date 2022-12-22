@@ -13,7 +13,7 @@ https://stripe.com/docs/payments
 
 Screenshots
 
-<img width="1372" alt="image" src="https://user-images.githubusercontent.com/5990147/208756205-c523c1ed-bbe3-431b-a108-73201f61a348.png">
+<img width="1421" alt="image" src="https://user-images.githubusercontent.com/5990147/209237300-34a31589-9845-4afd-8747-df360798c2c0.png">
 
 <img width="1451" alt="Screenshot 2022-12-20 at 20 00 05" src="https://user-images.githubusercontent.com/5990147/208756225-d0feb9c7-b3f6-4079-940a-666a56b21faf.png">
 
