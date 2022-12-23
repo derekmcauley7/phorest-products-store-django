@@ -1,4 +1,3 @@
-from urllib import response
 from django.shortcuts import render
 from userprofile.models import Profile
 from django.contrib.auth.decorators import login_required
