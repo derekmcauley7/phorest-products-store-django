@@ -12,7 +12,9 @@ def register(response):
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
-        return redirect("profile")
+            return redirect("profile")
+        else:
+            return render(response, "profile/register.html", {"form":form}) 
     else:
         form = RegisterForm()
         return render(response, "profile/register.html", {"form":form})
@@ -26,11 +28,15 @@ class LoginInterfaceView(LoginView):
     success_url = 'profile'
 
 class UserForm(forms.ModelForm):
+    first_name = forms.CharField(required=True, min_length=2)
+    last_name = forms.CharField(required=True, min_length=2)
     class Meta:
         model = User
-        fields = ("first_name", "last_name")
-
+        fields = ["first_name", "last_name"]
 class UserProfileForm(forms.ModelForm):
+    address_1 = forms.CharField(required=True)
+    country = forms.CharField(required=True, min_length=3)
+    post_code = forms.CharField(required=True, min_length=2)
     class Meta:
         model = Profile
         fields = ("address_1", "address_2", "country", "post_code")
@@ -45,6 +51,8 @@ def update_profile(request):
             user_form.save()
             user_profile_form.save()
             return redirect("products")
+        else:
+            return render(request, "profile/profile.html", {"u_form":user_form, "p_form": user_profile_form})
     else:
         user_form = UserForm(instance=request.user)
         user_profile_form = UserProfileForm(instance=request.user.profile)
