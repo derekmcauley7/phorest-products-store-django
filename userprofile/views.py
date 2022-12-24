@@ -7,6 +7,14 @@ from django import forms
 from .forms import RegisterForm
 from .models import Profile
 
+COUNTRIES = (
+    ('ireland','Ireland'),
+    ('england', 'England'),
+    ('poland','Poland'),
+    ('germany','Germany'),
+    ('france','France'),
+)
+
 def register(response):
     if response.method == "POST":
         form = RegisterForm(response.POST)
@@ -35,8 +43,8 @@ class UserForm(forms.ModelForm):
         fields = ["first_name", "last_name"]
 class UserProfileForm(forms.ModelForm):
     address_1 = forms.CharField(required=True)
-    country = forms.CharField(required=True, min_length=3)
-    post_code = forms.CharField(required=True, min_length=2)
+    post_code = forms.CharField(required=True)
+    country = forms.CharField(widget=forms.Select(choices=COUNTRIES), required=True)
     class Meta:
         model = Profile
         fields = ("address_1", "address_2", "country", "post_code")
