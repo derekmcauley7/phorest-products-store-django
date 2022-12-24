@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{%block content %}
+{% block content %}
 
 <div class="container mt-5 mb-5">
 
@@ -26,7 +26,7 @@
                                             <div class="py-2">
 
                                             <span class="d-block text-muted">Order Date</span>
-                                            <span>{{ order.created }}</span>
+                                            <span>{{order.created}}</span>
                                                 
                                             </div>
                                         </td>
@@ -35,7 +35,7 @@
                                             <div class="py-2">
 
                                                 <span class="d-block text-muted">Order No</span>
-                                            <span><p>{{order.id }}</p></span>
+                                            <span><p>{{order.id}}</p></span>
                                                 
                                             </div>
                                         </td>
@@ -45,10 +45,10 @@
 
                                                 <span class="d-block text-muted">Shiping Address</span>
                                                     <span><p>
-                                                            {{profile.address_1 }}, 
-                                                            {{profile.address_2 }}<br>
-                                                            {{profile.country }}<br>
-                                                            {{profile.post_code }}
+                                                            {{profile.address_1}}, 
+                                                            {{profile.address_2}}<br>
+                                                            {{profile.country}}<br>
+                                                            {{profile.post_code}}
                                                         </p>
                                                     </span>
                                                 
@@ -104,7 +104,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="text-right">
-                                                        <span>{{order.total_price }}</span>
+                                                        <span>{{order.total_price}}</span>
                                                     </div>
                                                 </td>
                                             </tr>

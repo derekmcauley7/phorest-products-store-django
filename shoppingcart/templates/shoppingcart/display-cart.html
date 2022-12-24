@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load cart_tag %}
-{%block content %}
+{% block content %}
 
 <div class="wrapper">
     <div class="d-flex align-items-center justify-content-between">
@@ -37,7 +37,7 @@
                                 </div>
                         </td>
                         <td>
-                            {% if value.quantity > 1%}
+                            {% if value.quantity > 1 %}
                             <a href="{% url 'item_decrement' value.product_id %}"> - </a> 
                             {% endif %}
                             {{value.quantity}} 
