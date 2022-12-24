@@ -11,6 +11,7 @@ def all_products(request):
    return render(request, "product/products.html", {"products": products})
 
 def create_products(productJson):
+  default_image_url = "https://st.depositphotos.com/1987177/3470/v/450/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg"
   for product in productJson:
-        newProduct = Product.objects.create(name = product["name"], price = product["price"], product_id=product["productId"], image="https://st.depositphotos.com/1987177/3470/v/450/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg", quantity_in_stock = product["quantityInStock"])
-        newProduct.save()
+    newProduct = Product.objects.create(name = product["name"], price = product["price"], product_id=product["productId"], image=default_image_url, quantity_in_stock = product["quantityInStock"])
+    newProduct.save()
