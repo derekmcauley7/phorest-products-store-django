@@ -19,6 +19,13 @@
                         <th scope="col" class="text-uppercase">total</th>
                     </tr>
                 </thead>
+                {% if not request.session.cart.items %}
+                    <div class="alert alert-info" role="alert">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                           Cart is currently empty. 
+                           <a href="{% url 'products' %}" > Add Products </a>
+                    </div>
+                {% endif %}
                 <tbody>
                     {% for key,value in request.session.cart.items %}
                     <tr>

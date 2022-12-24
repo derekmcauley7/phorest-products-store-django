@@ -47,7 +47,7 @@
 
               {% if  request.session.cart|length == 0 %}
               <li>
-                <a href=""><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
+                <a href="{% url 'cart_detail' %}"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
               </li>   
               {% else %}
               <li>
