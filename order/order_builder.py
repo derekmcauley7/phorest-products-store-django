@@ -13,11 +13,11 @@ class OrderBuilder():
         return order
 
     def create_order_items(request, order):
-        for key, value in request.session.get(settings.CART_SESSION_ID).items():
-            product = Product.objects.get(pk=value['product_id'])
+        for index, item in request.session.get(settings.CART_SESSION_ID).items():
+            product = Product.objects.get(pk=item['product_id'])
             order_item = OrderItem.objects.create(
-                price = Decimal(value['price']), 
-                quantity = int(value['quantity']), 
+                price = Decimal(item['price']), 
+                quantity = int(item['quantity']), 
                 product = product,
                 order = order)
             order_item.save()

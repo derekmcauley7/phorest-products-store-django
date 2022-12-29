@@ -40,10 +40,10 @@ def cart_detail(request):
     cart = Cart(request)
     total = getTotal(request)
     key = STRIPE_PUBLISHABLE_KEY
-    return render(request, 'shoppingcart/display-cart.html', {'total' : total, 'key': key, 'payment_amount' : total * 100 })
+    return render(request, 'shoppingcart/display-cart.html', {'total' : total, 'payment_amount' : total * 100 })
 
 def getTotal(request):
     total = 0 
-    for key, value in request.session.get(settings.CART_SESSION_ID).items():
-        total = total + Decimal(value['quantity']) * Decimal(value['price'])
+    for index, item in request.session.get(settings.CART_SESSION_ID).items():
+        total = total + Decimal(item['quantity']) * Decimal(item['price'])
     return total
