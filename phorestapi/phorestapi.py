@@ -1,14 +1,17 @@
 from requests.auth import HTTPBasicAuth 
+from django.http import Http404
 import requests
 from phorestproducts.settings import API_ENDPOINT, API_USERNAME, API_PASSWORD
 import json
 
 class PhorestApi():
-
     # uses this endopoint to get a list of products
     # https://developer.phorest.com/#!/Product/getProducts
     def get_products():
-        res = requests.get(API_ENDPOINT + 'product', auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD))
+        try:
+            res = requests.get(API_ENDPOINT + 'product', auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD))
+        except Exception as e:
+            raise Http404("Exception when requesting Products from Phorest API" + e) 
         return res.json().get('_embedded').get('products')
 
     # creates a purchase for a prdoduct using this endpont 

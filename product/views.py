@@ -3,12 +3,12 @@ from .models import Product
 from phorestapi.phorestapi import PhorestApi
 
 def all_products(request):
-   products = Product.objects.filter(price__gt = 0.00).filter(quantity_in_stock__gt = 0)
-   if not products.exists():
-     productJson = PhorestApi.get_products()
-     create_products(productJson)
-     products = Product.objects.filter(price__gt = 0.00).filter(quantity_in_stock__gt = 0)
-   return render(request, "product/products.html", {"products": products})
+  products = Product.objects.filter(price__gt = 0.00).filter(quantity_in_stock__gt = 0)
+  if not products:
+    productJson = PhorestApi.get_products()
+    create_products(productJson)
+  products = Product.objects.filter(price__gt = 0.00).filter(quantity_in_stock__gt = 0)
+  return render(request, "product/products.html", {"products": products})
 
 def create_products(productJson):
   default_image_url = "https://st.depositphotos.com/1987177/3470/v/450/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg"

@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from decimal import Decimal
 from django.conf import settings
+from django.http import Http404
 
 def cart_add(request, id):
     cart = Cart(request)
@@ -14,8 +15,13 @@ def cart_add(request, id):
 
 def item_clear(request, id):
     cart = Cart(request)
-    product = Product.objects.get(id=id)
-    cart.remove(product)
+    try:
+        product = Product.objects.get(id=id)
+        cart.remove(product)
+    except:
+        cart.clear()
+        raise Http404("There was an issue with selected products, your cart has been cleared...sorry")
+        
     return redirect('shopping-cart:cart_detail')
 
 def item_increment(request, id):
