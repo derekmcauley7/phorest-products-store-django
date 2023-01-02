@@ -38,17 +38,17 @@
                         </td>
                         <td>
                             {% if value.quantity > 1 %}
-                            <a href="{% url 'item_decrement' value.product_id %}"> - </a> 
+                            <a href="{% url 'shopping-cart:item_decrement' value.product_id %}"> - </a> 
                             {% endif %}
                             {{value.quantity}} 
-                            <a href="{% url 'item_increment' value.product_id %}"> + </a>
+                            <a href="{% url 'shopping-cart:item_increment' value.product_id %}"> + </a>
                         </td>
                 
                         <td class="d-flex flex-column"><span class="red">{{value.price}}</span>
                         </td>
                         <td class="font-weight-bold">
                             {{ value.price|multiply:value.quantity }}
-                          <a href="{% url 'item_clear' value.product_id %}"> <div class="close">&times;</div> </a> 
+                          <a href="{% url 'shopping-cart:item_clear' value.product_id %}"> <div class="close">&times;</div> </a> 
                         </td>
                     </tr>
                     {% endfor %}

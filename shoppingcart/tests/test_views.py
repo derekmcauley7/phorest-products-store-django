@@ -25,17 +25,17 @@ class TestViews(TestCase):
     def test_add_cart_item_view(self):
         self.login_user()
 
-        response = self.client.get(reverse('cart_add', args=[1]))
+        response = self.client.get(reverse('shopping-cart:cart_add', args=[1]))
         self.assertEqual(response.status_code, 302)
 
     def test_clear_cart_should_redirect_view(self):
-        response = self.client.get(reverse('item_clear', args=[1]))
+        response = self.client.get(reverse('shopping-cart:item_clear', args=[1]))
         self.assertEqual(response.status_code, 302)
 
     def test_cart_details_view(self):
         self.login_user()
 
-        response = self.client.get(reverse('cart_detail'))
+        response = self.client.get(reverse('shopping-cart:cart_detail'))
         self.assertTemplateUsed('display-cart.html')
         self.assertEqual(response.status_code, 200)
 
