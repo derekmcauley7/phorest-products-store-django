@@ -7,6 +7,7 @@ import json
 class PhorestApi():
     # uses this endopoint to get a list of products
     # https://developer.phorest.com/#!/Product/getProducts
+    @staticmethod
     def get_products():
         try:
             res = requests.get(API_ENDPOINT + 'product', auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD))
@@ -16,6 +17,7 @@ class PhorestApi():
 
     # creates a purchase for a prdoduct using this endpont 
     # https://developer.phorest.com/#!/Purchase/createPurchaseForBranch
+    @staticmethod
     def create_purchase(order):
         data = PhorestApi.create_purchase_request_data(order.order_items, order.total_price, str(order.id) + "new_order")
         headers = {'Content-type': 'application/json'}
@@ -23,7 +25,7 @@ class PhorestApi():
         auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD), headers= headers)
         return request
 
-
+    @staticmethod
     def create_purchase_request_data(order_items, price, order_numer):
         return {
                 "clientId":"QLbhb0lKCrKmQemqd6h7iA", 
@@ -31,7 +33,8 @@ class PhorestApi():
                 "number": order_numer,
                 "payments":[{"amount":float(price),"type":"CREDIT"}]
                 }
-
+                
+    @staticmethod
     def order_items_data(order_items):
         product_json = []
         for item in order_items:
