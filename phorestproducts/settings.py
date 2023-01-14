@@ -103,7 +103,7 @@ DATABASES = {
         'NAME': 'dbtest', 
         'USER': DB_USER_NAME,
         'PASSWORD': DB_PASSWORD,
-        'HOST': '127.0.0.1', 
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }

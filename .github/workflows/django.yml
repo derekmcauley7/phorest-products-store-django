@@ -19,7 +19,8 @@ jobs:
       postgres:
         image: postgres:12.5
         env:
-          POSTGRES_DB: postgres
+          DEBUG: true
+          POSTGRES_DB: dbtest
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         ports:
@@ -38,10 +39,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install braintree mysqlclient apprise
-    - name: Migrations
-      run: |
-        python manage.py makemigrations
-        python manage.py migrate
     - name: Run Tests
+      env:
+        DEBUG: true
+        POSTGRES_DB: dbtest
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
       run: |
         python manage.py test
