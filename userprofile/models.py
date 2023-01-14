@@ -5,9 +5,9 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    address_1 = models.CharField(max_length=100, blank=True, null=True)
-    address_2 = models.CharField(max_length=100, blank=True, null=True)
-    country = models.CharField(max_length=100, blank=True, null=True)
+    address_1 = models.CharField(max_length=50, blank=True, null=True)
+    address_2 = models.CharField(max_length=50, blank=True, null=True)
+    country = models.CharField(max_length=50, blank=True, null=True)
     post_code = models.CharField(max_length=20, blank=True, null=True)
 
 @receiver(post_save, sender=User)

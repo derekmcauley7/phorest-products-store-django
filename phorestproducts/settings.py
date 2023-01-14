@@ -69,6 +69,8 @@ API_ENDPOINT = config("API_ENDPOINT")
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY')
 CART_SESSION_ID = 'cart'
+DB_USER_NAME = config("DB_USER_NAME")
+DB_PASSWORD  = config("DB_PASSWORD")
 
 ROOT_URLCONF = 'phorestproducts.urls'
 
@@ -97,8 +99,12 @@ WSGI_APPLICATION = 'phorestproducts.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dbtest', 
+        'USER': DB_USER_NAME,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
     }
 }
 
