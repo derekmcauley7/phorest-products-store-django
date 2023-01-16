@@ -19,10 +19,13 @@ class PhorestApi():
     # https://developer.phorest.com/#!/Purchase/createPurchaseForBranch
     @staticmethod
     def create_purchase(order):
-        data = PhorestApi.create_purchase_request_data(order.order_items, order.total_price, str(order.id) + "new_order")
-        headers = {'Content-type': 'application/json'}
-        request = requests.post(API_ENDPOINT + 'purchase', data=json.dumps(data), 
-        auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD), headers= headers)
+        try: 
+            data = PhorestApi.create_purchase_request_data(order.order_items, order.total_price, str(order.id) + "new_order")
+            headers = {'Content-type': 'application/json'}
+            request = requests.post(API_ENDPOINT + 'purchase', data=json.dumps(data), 
+            auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD), headers= headers)
+        except Exception as e:
+            raise Http404("Exception when creating Purchase from Phorest API" + e) 
         return request
 
     @staticmethod
