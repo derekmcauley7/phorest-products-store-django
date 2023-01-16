@@ -7,3 +7,6 @@ class Product(models.Model):
     product_id = models.TextField()
     quantity_in_stock = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = "product"

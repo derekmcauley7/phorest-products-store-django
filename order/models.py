@@ -9,6 +9,9 @@ class Order(models.Model):
     total_price = models.DecimalField(max_digits=50, decimal_places=2)
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = "order"
+
     @property
     def calculate_total(self):
         total = 0
@@ -30,3 +33,6 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="order")
     price = models.DecimalField(max_digits=50, decimal_places=2)
     quantity = models.IntegerField()
+
+    class Meta:
+        db_table = "order_item"

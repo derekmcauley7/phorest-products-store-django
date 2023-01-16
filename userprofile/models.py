@@ -10,6 +10,9 @@ class Profile(models.Model):
     country = models.CharField(max_length=50, blank=True, null=True)
     post_code = models.CharField(max_length=20, blank=True, null=True)
 
+    class Meta:
+        db_table = "profile"
+
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
